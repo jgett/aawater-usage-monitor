@@ -1,0 +1,15 @@
+/*
+	You can find your meter id here: https://secure.a2gov.org/WaterConsumption/
+	Enter your account number and on the next page you will see your meter id in a select
+	under "Quarterly Water Bill Summary" and "Select a meter".
+*/
+
+const moment = require("moment");
+
+var settings = {
+	meterId: "xxxxx", 					// a meter id from a2gov.org
+	startDate: moment("2016-01-01"),	// a moment object for the start date to collect data from
+	mongoUrl: "xxxxx" 					// a mongodb url to your mongodb database, go here https://www.mongodb.com/download-center to download, unless you already have it
+};
+
+module.exports = settings;

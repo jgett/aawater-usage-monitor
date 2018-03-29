@@ -1,0 +1,30 @@
+{
+  "name": "annarbor-water-usage-monitor",
+  "version": "1.0.0",
+  "description": "Checks daily water usage for a Ann Arbor water meter and send and alert if too much water is being used.",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/jgett/annarbor-water-usage-monitor.git"
+  },
+  "keywords": [
+    "water",
+    "utility",
+    "ann",
+    "arbor"
+  ],
+  "author": "jgett",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/jgett/annarbor-water-usage-monitor/issues"
+  },
+  "homepage": "https://github.com/jgett/annarbor-water-usage-monitor#readme",
+  "dependencies": {
+    "moment": "^2.21.0",
+    "mongodb": "^3.0.5",
+    "xmldoc": "^1.1.0"
+  }
+}
