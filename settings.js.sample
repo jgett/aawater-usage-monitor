@@ -1,15 +1,26 @@
 /*
-	You can find your meter id here: https://secure.a2gov.org/WaterConsumption/
-	Enter your account number and on the next page you will see your meter id in a select
-	under "Quarterly Water Bill Summary" and "Select a meter".
+    You can find your meter id here: https://secure.a2gov.org/WaterConsumption/
+    Enter your account number and on the next page you will see your meter id in a select
+    under "Quarterly Water Bill Summary" and "Select a meter".
 */
 
-const moment = require("moment");
-
 var settings = {
-	meterId: "xxxxx", 					// a meter id from a2gov.org
-	startDate: moment("2016-01-01"),	// a moment object for the start date to collect data from
-	mongoUrl: "xxxxx" 					// a mongodb url to your mongodb database, go here https://www.mongodb.com/download-center to download, unless you already have it
+    meterId: "xxxxx",                   // the meter id from a2gov.org
+    startDate: "2016-01-01",            // the start date to collect data from
+    limit: 200,                         // the number of gallons/day usage that will trigger an alert email
+    daily: true,                        // when true send a message every time regardless of the limit (over limit alerts will have a different subject)
+    mongoUrl: "xxxxx",                  // the mongodb url to your mongodb database (see https://www.mongodb.com/download-center to download, unless you already have it)
+    email: {
+        sender: "xxxxx",                // the email address to send messages from
+        recipient: "xxxxx",             // the email address to send messages to
+        options: {
+            service: "gmail",           // the service to use (see http://nodemailer.com/smtp/well-known/)
+            auth: {
+                user: "xxxxx",          // the smtp server username
+                pass: "xxxxx"           // the smtp server password
+            }
+        }
+    }
 };
 
 module.exports = settings;

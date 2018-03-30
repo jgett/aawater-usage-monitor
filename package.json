@@ -1,10 +1,10 @@
 {
-  "name": "annarbor-water-usage-monitor",
+  "name": "aawater-usage-monitor",
   "version": "1.0.0",
   "description": "Checks daily water usage for a Ann Arbor water meter and send and alert if too much water is being used.",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "mocha"
   },
   "repository": {
     "type": "git",
@@ -28,5 +28,8 @@
     "nodemailer": "^4.6.3",
     "promise": "^8.0.1",
     "xmldoc": "^1.1.0"
+  },
+  "devDependencies": {
+    "mocha": "^5.0.5"
   }
 }
