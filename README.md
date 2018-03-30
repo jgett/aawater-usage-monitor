@@ -20,4 +20,4 @@ You can get your meter id from the a2gov.org website (see settings.js.sample for
 * startDate
 * endDate
 
-The script checks for saved data in your local MongoDB database retrieves any missing data from a2gov.org if necessary. An email is sent using the email service you provide (for example gmail) which is configured in settings.js. The email can be sent everyime the script runs, only when your daily usage exceeds a predefined limit, or never (when settings.daily == false, and settings.limit == 0).
+The script checks for saved data in your local MongoDB database retrieves any missing data from a2gov.org if necessary. An email is sent using the email service you provide (for example gmail) which is configured in settings.js. The email can be sent everyime the script runs, only when your daily usage exceeds a predefined limit, or never (when settings.daily == false, and settings.limit == 0) if you just want to store the data in mongo.
