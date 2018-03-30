@@ -70,16 +70,22 @@ const checkUsage = docs => {
             log("found usage: " + usage.length);
             return repo.insert(usage).then(inserted => {
                 log("inserted documents: " + inserted.length );
-                return Promise.resolve(sortUsage(docs.concat(inserted)));
+                return Promise.resolve(true, sortUsage(docs.concat(inserted)));
             });
         });
     }
     
-    return Promise.resolve(docs);
+    return Promise.resolve(false, docs);
 };
 
 // determines if mail needs to be sent and sends it if necessary
-const sendEmail = usage => {
+const sendEmail = (updated, usage) => {
+    // no need to send email if there wasn't an update
+    if (!updated){
+        log("skipped sending email because no update was needed");
+        return Promise.resolve(false);
+    }
+    
     let mostRecent = usage[0];
     let m = moment(mostRecent.date);
     
