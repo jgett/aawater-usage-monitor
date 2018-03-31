@@ -53,7 +53,8 @@ const firstRunCheck = docs => {
 
 // checks the most recent usage to see if an update is needed
 const checkUsage = docs => {
-    let mostRecent = sortUsage(docs)[0];
+    let sorted = sortUsage(docs);
+    let mostRecent = sorted[0];
     let usageDate = moment(mostRecent.date);
     
     log("checking: " + usageDate.format("YYYY-MM-DD"));
@@ -70,23 +71,23 @@ const checkUsage = docs => {
             log("found usage: " + usage.length);
             return repo.insert(usage).then(inserted => {
                 log("inserted documents: " + inserted.length );
-                return Promise.resolve(true, sortUsage(docs.concat(inserted)));
+                return Promise.resolve({updated: true, usage: sortUsage(sorted.concat(inserted))});
             });
         });
     }
     
-    return Promise.resolve(false, docs);
+    return Promise.resolve({updated: false, usage: sorted});
 };
 
 // determines if mail needs to be sent and sends it if necessary
-const sendEmail = (updated, usage) => {
+const sendEmail = args => {
     // no need to send email if there wasn't an update
-    if (!updated){
+    if (!args.updated){
         log("skipped sending email because no update was needed");
         return Promise.resolve(false);
     }
     
-    let mostRecent = usage[0];
+    let mostRecent = args.usage[0];
     let m = moment(mostRecent.date);
     
     log("most recent is now: " + m.format("M/D/YYYY"));
